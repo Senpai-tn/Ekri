@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo:6-jammy
+    ports:
+      - "27017:27017"
+    volumes:
+      - dbdata6:/data/db
+  root:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    image: root
+    volumes:
+      - ./:/Ekri
+    ports:
+      - 2500:2500
+  user:
+    build:
+      context: ./user-service
+      dockerfile: dockerfile
+    image: user
+    volumes:
+      - ./user-service:/Ekri/user-service
+    ports:
+      - 2600:2600
+volumes:
+  dbdata6:
