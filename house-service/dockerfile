@@ -1,6 +1,5 @@
 FROM node:alpine
 WORKDIR /Ekri/house-service
-COPY package.json ./
-RUN npm i 
 COPY ./  ./
+RUN npm i 
 CMD [ "npm","start" ]

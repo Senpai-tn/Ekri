@@ -1,6 +1,5 @@
 FROM node:alpine
 WORKDIR /Ekri/auth-service
-COPY package.json ./
-RUN npm i 
 COPY ./  ./
+RUN npm i 
 CMD [ "npm","start" ]
