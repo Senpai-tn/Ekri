@@ -1,6 +1,6 @@
-import express from "express";
-import cors from "cors";
-import proxy from "express-http-proxy";
+const express = require("express");
+const cors = require("cors");
+const proxy = require("express-http-proxy");
 const app = express();
 
 app.use(cors());
