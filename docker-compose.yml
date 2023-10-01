@@ -26,6 +26,7 @@ services:
     restart: always
     volumes:
       - ./user-service:/Ekri/user-service
+      - /Ekri/user-service/node_modules
     ports:
       - 2600:2600
   auth:
@@ -36,6 +37,7 @@ services:
     restart: always
     volumes:
       - ./auth-service:/Ekri/auth-service
+      - /Ekri/auth-service/node_modules
     ports:
       - 2700:2700
   house:
@@ -46,6 +48,7 @@ services:
     restart: always
     volumes:
       - ./house-service:/Ekri/house-service
+      - /Ekri/house-service/node_modules
     ports:
       - 2800:2800
   front:
@@ -56,6 +59,7 @@ services:
     restart: always
     volumes:
       - ./ekri-fe:/Ekri/Ekri-FE
+      - /Ekri/Ekri-FE/node_modules
     ports:
       - 3000:3000
 
