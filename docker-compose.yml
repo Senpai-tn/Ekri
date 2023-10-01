@@ -2,6 +2,7 @@ version: "3.8"
 services:
   mongo:
     image: mongo:6-jammy
+    restart: always
     ports:
       - "27017:27017"
     volumes:
@@ -11,6 +12,7 @@ services:
       context: ./
       dockerfile: dockerfile
     image: root
+    restart: always
     volumes:
       - ./:/Ekri
     ports:
@@ -20,9 +22,41 @@ services:
       context: ./user-service
       dockerfile: dockerfile
     image: user
+    restart: always
     volumes:
       - ./user-service:/Ekri/user-service
     ports:
       - 2600:2600
+  auth:
+    build:
+      context: ./auth-service
+      dockerfile: dockerfile
+    image: auth
+    restart: always
+    volumes:
+      - ./auth-service:/Ekri/auth-service
+    ports:
+      - 2700:2700
+  house:
+    build:
+      context: ./house-service
+      dockerfile: dockerfile
+    image: house
+    restart: always
+    volumes:
+      - ./house-service:/Ekri/house-service
+    ports:
+      - 2800:2800
+  front:
+    build:
+      context: ./ekri-fe
+      dockerfile: dockerfile
+    image: front
+    restart: always
+    volumes:
+      - ./ekri-fe:/Ekri/Ekri-FE
+    ports:
+      - 3000:3000
+
 volumes:
   dbdata6:
