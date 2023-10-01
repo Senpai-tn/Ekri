@@ -15,6 +15,7 @@ services:
     restart: always
     volumes:
       - ./:/Ekri
+      - /Ekri/node_modules
     ports:
       - 2500:2500
   user:
