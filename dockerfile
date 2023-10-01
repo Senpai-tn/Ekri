@@ -1,6 +1,7 @@
 FROM node:18.17.1-alpine
 WORKDIR /Ekri
-RUN npm i -g nodemon express
+RUN npm install -g nodemon
+RUN npm install express
 COPY package.json ./
 RUN npm install
 COPY ./  ./
