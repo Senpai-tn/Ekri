@@ -1,29 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Pages/Login";
-import uiActions from "./redux/actions/uiActions";
 function Navigator() {
   const { user } = useSelector((state) => state.userReducer);
-  const { isDark } = useSelector((state) => state.uiReducer);
-  const dispatch = useDispatch();
 
   return (
-    <div
-      style={{
-        background: isDark ? "#000" : "#fff",
-        color: isDark ? "#fff" : "#000",
-        minHeight: "100vh",
-        padding: 30,
-      }}
-    >
-      <button
-        onClick={() => {
-          dispatch({ type: uiActions.changeTheme, isDark: !isDark });
-        }}
-      >
-        {isDark ? "Change to light" : "change to dark"}
-      </button>
+    <div>
       <BrowserRouter>
         {user ? (
           <Routes>

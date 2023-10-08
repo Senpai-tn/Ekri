@@ -1,6 +1,6 @@
-import express from "express";
-import cors from "cors";
-import { connect } from "mongoose";
+const express = require("express");
+const cors = require("cors");
+const { connect } = require("mongoose");
 const app = express();
 
 connect("mongodb://mongo:27017")
