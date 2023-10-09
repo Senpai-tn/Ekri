@@ -1,6 +1,11 @@
 import React from "react";
 import "./style.css";
+import { Box, Stack, TextField, Typography } from "@mui/material";
+import { useForm, Controller } from "react-hook-form";
+import TextForm from "../../components/TextForm";
 function Login() {
+  const { control, handleSubmit, watch, setError } = useForm();
+  const submitLogin = () => {};
   return (
     <section>
       <div
@@ -29,14 +34,37 @@ function Login() {
           right: 300,
         }}
       ></div>
-      <div className="box">
-        <div className="container">
-          <div className="form">
-            <h1>Login form</h1>
-            <input />
-          </div>
-        </div>
-      </div>
+
+      <Box className="container">
+        <Stack justifyContent={"center"} textAlign={"center"}>
+          <Typography
+            sx={{
+              fontSize: 45,
+              fontWeight: "900",
+              fontFamily: "Kanit",
+              color: "#115599ad",
+            }}
+          >
+            Login
+          </Typography>
+          <Controller
+            control={control}
+            name=""
+            render={() => {
+              return <TextForm sx={{ my: "20px" }} label="Email" />;
+            }}
+          />
+          <Controller
+            control={control}
+            name=""
+            render={() => {
+              return (
+                <TextForm sx={{ my: "20px" }} label="Email" type={"password"} />
+              );
+            }}
+          />
+        </Stack>
+      </Box>
     </section>
   );
 }

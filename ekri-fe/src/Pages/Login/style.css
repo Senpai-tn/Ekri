@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,900&display=swap");
+
 section {
   display: flex;
   justify-content: center;
@@ -11,7 +13,6 @@ section .color {
   filter: blur(150px);
   height: 20vh;
   width: 100vw;
-  top: "-350px";
 }
 
 .box {
@@ -23,8 +24,12 @@ section .color {
   width: 400px;
   min-height: 400px;
   background: rgba(2500, 255, 255, 0.4);
-  border-radius: 10px;
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.rounded + fieldset {
+  border-radius: 20px;
 }
