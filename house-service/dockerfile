@@ -1,5 +1,6 @@
 FROM node:alpine
 WORKDIR /Ekri/house-service
+COPY package.json ./
+RUN npm install -g npm && npm install
 COPY ./  ./
-RUN npm i 
 CMD [ "npm","start" ]
