@@ -1,12 +1,12 @@
 version: "3.8"
 services:
-  mongo:
-    image: mongo:6-jammy
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - dbdata6:/data/db
+  # # mongo:
+  # #   image: mongo:6-jammy
+  # #   restart: always
+  # #   ports:
+  # #     - "27017:27017"
+  # #   volumes:
+  # #     - dbdata6:/data/db
   root:
     build:
       context: ./
@@ -26,11 +26,6 @@ services:
     restart: always
     volumes:
       - ./user-service:/Ekri/user-service
-      - /user-service/node_modules
-      - ./middelware/:/Ekri/middelware
-      - ./models/:/Ekri/models
-      - ./node_modules/:/Ekri/node_modules
-      - ./package.json:/Ekri/package.json
     ports:
       - 2600:2600
   auth:
