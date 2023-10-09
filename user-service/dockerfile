@@ -2,5 +2,5 @@ FROM node:alpine
 WORKDIR /Ekri/user-service
 COPY package.json .
 COPY ./  ./
-# RUN npm install -g npm && npm install
+RUN npm install -g npm && npm install
 CMD [ "npm","start" ]
