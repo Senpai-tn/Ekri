@@ -14,9 +14,8 @@ services:
     image: root
     restart: always
     volumes:
-      - ./:/Ekri
-      - ./middelware/:/Ekri/middelware
-      - ./models/:/Ekri/models
+      - ./:/Ekri/
+      - /node_modules
     ports:
       - 2500:2500
   user:
@@ -27,9 +26,11 @@ services:
     restart: always
     volumes:
       - ./user-service:/Ekri/user-service
+      - /user-service/node_modules
       - ./middelware/:/Ekri/middelware
       - ./models/:/Ekri/models
-
+      - ./node_modules/:/Ekri/node_modules
+      - ./package.json:/Ekri/package.json
     ports:
       - 2600:2600
   auth:
@@ -40,9 +41,11 @@ services:
     restart: always
     volumes:
       - ./auth-service:/Ekri/auth-service
+      - /auth-service/node_modules
       - ./middelware/:/Ekri/middelware
       - ./models/:/Ekri/models
       - ./node_modules/:/Ekri/node_modules
+      - ./package.json:/Ekri/package.json
     ports:
       - 2700:2700
   house:
@@ -53,9 +56,11 @@ services:
     restart: always
     volumes:
       - ./house-service:/Ekri/house-service
+      - /house-service/node_modules
       - ./middelware/:/Ekri/middelware
       - ./models/:/Ekri/models
       - ./node_modules/:/Ekri/node_modules
+      - ./package.json:/Ekri/package.json
     ports:
       - 2800:2800
   front:
