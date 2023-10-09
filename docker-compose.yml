@@ -15,7 +15,6 @@ services:
     restart: always
     volumes:
       - ./:/Ekri
-      - ./node_modules
       - ./middelware/:/Ekri/middelware
       - ./models/:/Ekri/models
     ports:
@@ -28,10 +27,9 @@ services:
     restart: always
     volumes:
       - ./user-service:/Ekri/user-service
-      - ./user-service/node_modules
       - ./middelware/:/Ekri/middelware
       - ./models/:/Ekri/models
-      - ./node_modules/:/Ekri/node_modules
+
     ports:
       - 2600:2600
   auth:
@@ -42,7 +40,6 @@ services:
     restart: always
     volumes:
       - ./auth-service:/Ekri/auth-service
-      - /Ekri/auth-service/node_modules
       - ./middelware/:/Ekri/middelware
       - ./models/:/Ekri/models
       - ./node_modules/:/Ekri/node_modules
@@ -56,7 +53,6 @@ services:
     restart: always
     volumes:
       - ./house-service:/Ekri/house-service
-      - /Ekri/house-service/node_modules
       - ./middelware/:/Ekri/middelware
       - ./models/:/Ekri/models
       - ./node_modules/:/Ekri/node_modules

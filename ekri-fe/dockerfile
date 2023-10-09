@@ -1,5 +1,6 @@
 FROM node:alpine
 WORKDIR /Ekri/Ekri-FE
+COPY package.json .
 COPY ./  ./
-RUN npm i 
+RUN npm install 
 CMD [ "npm" ,"start" ]
