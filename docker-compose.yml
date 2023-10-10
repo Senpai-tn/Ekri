@@ -1,17 +1,17 @@
 version: "3.8"
 services:
-  # # mongo:
-  # #   image: mongo:6-jammy
-  # #   restart: always
-  # #   ports:
-  # #     - "27017:27017"
-  # #   volumes:
-  # #     - dbdata6:/data/db
+  mongo:
+    image: mongo:6-jammy
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - dbdata6:/data/db
   root:
     build:
       context: ./
       dockerfile: dockerfile
-    image: root
+    image: senpai1996/root
     restart: always
     volumes:
       - ./:/Ekri/
@@ -21,17 +21,22 @@ services:
     build:
       context: ./
       dockerfile: ./user-service/dockerfile
-    image: user
+    image: senpai1996/user
     restart: always
     volumes:
       - ./user-service:/Ekri/user-service
+      - /Ekri/user-service/node_modules
+      - ./middelware/:/Ekri/middelware
+      - ./models/:/Ekri/models
+      - ./node_modules/:/Ekri/node_modules
+      - ./package.json:/Ekri/package.json
     ports:
       - 2600:2600
   auth:
     build:
       context: ./auth-service
       dockerfile: dockerfile
-    image: auth
+    image: senpai1996/auth
     restart: always
     volumes:
       - ./auth-service:/Ekri/auth-service
@@ -46,28 +51,24 @@ services:
     build:
       context: ./house-service
       dockerfile: dockerfile
-    image: house
+    image: senpai1996/house
     restart: always
     volumes:
       - ./house-service:/Ekri/house-service
-      - /house-service/node_modules
-      - ./middelware/:/Ekri/middelware
-      - ./models/:/Ekri/models
-      - ./node_modules/:/Ekri/node_modules
-      - ./package.json:/Ekri/package.json
+
     ports:
       - 2800:2800
-  front:
-    build:
-      context: ./ekri-fe
-      dockerfile: dockerfile
-    image: front
-    restart: always
-    volumes:
-      - ./ekri-fe:/Ekri/Ekri-FE
-      - /Ekri/Ekri-FE/node_modules
-    ports:
-      - 3000:3000
+  # front:
+  #   build:
+  #     context: ./ekri-fe
+  #     dockerfile: dockerfile
+  #   image: senpai1996/front
+  #   restart: always
+  #   volumes:
+  #     - ./ekri-fe:/Ekri/Ekri-FE
+  #     - /Ekri/Ekri-FE/node_modules
 
+  #   ports:
+  #     - 3000:3000
 volumes:
   dbdata6:
