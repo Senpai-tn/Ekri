@@ -1,52 +1,52 @@
 version: "3.8"
 services:
-  mongo:
-    image: mongo:6-jammy
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - dbdata6:/data/db
-  root:
-    build:
-      context: ./
-      dockerfile: dockerfile
-    image: senpai1996/root
-    restart: always
-    volumes:
-      - ./:/Ekri/
-    ports:
-      - 2500:2500
-  user:
-    build:
-      context: ./
-      dockerfile: ./user-service/dockerfile
-    image: senpai1996/user
-    restart: always
-    volumes:
-      - ./user-service:/Ekri/user-service
-      - /Ekri/user-service/node_modules
-      - ./middelware/:/Ekri/middelware
-      - ./models/:/Ekri/models
-      - ./node_modules/:/Ekri/node_modules
-      - ./package.json:/Ekri/package.json
-    ports:
-      - 2600:2600
-  auth:
-    build:
-      context: ./auth-service
-      dockerfile: dockerfile
-    image: senpai1996/auth
-    restart: always
-    volumes:
-      - ./auth-service:/Ekri/auth-service
-      - /auth-service/node_modules
-      - ./middelware/:/Ekri/middelware
-      - ./models/:/Ekri/models
-      - ./node_modules/:/Ekri/node_modules
-      - ./package.json:/Ekri/package.json
-    ports:
-      - 2700:2700
+  # mongo:
+  #   image: senpai1996/mongo:6-jammy
+  #   restart: always
+  #   ports:
+  #     - "27017:27017"
+  #   volumes:
+  #     - dbdata6:/data/db
+  # root:
+  #   build:
+  #     context: ./
+  #     dockerfile: dockerfile
+  #   image: senpai1996/root
+  #   restart: always
+  #   volumes:
+  #     - ./:/Ekri/
+  #   ports:
+  #     - 2500:2500
+  # user:
+  #   build:
+  #     context: ./
+  #     dockerfile: ./user-service/dockerfile
+  #   image: senpai1996/user
+  #   restart: always
+  #   volumes:
+  #     - ./user-service:/Ekri/user-service
+  #     - /user-service/node_modules
+  #     - ./middelware/:/Ekri/middelware
+  #     - ./models/:/Ekri/models
+  #     - ./node_modules/:/Ekri/node_modules
+  #     - ./package.json:/Ekri/package.json
+  #   ports:
+  #     - 2600:2600
+  # auth:
+  #   build:
+  #     context: ./auth-service
+  #     dockerfile: dockerfile
+  #   image: senpai1996/auth
+  #   restart: always
+  #   volumes:
+  #     - ./auth-service:/Ekri/auth-service
+  #     - /auth-service/node_modules
+  #     - ./middelware/:/Ekri/middelware
+  #     - ./models/:/Ekri/models
+  #     - ./node_modules/:/Ekri/node_modules
+  #     - ./package.json:/Ekri/package.json
+  #   ports:
+  #     - 2700:2700
   house:
     build:
       context: ./house-service
@@ -55,7 +55,6 @@ services:
     restart: always
     volumes:
       - ./house-service:/Ekri/house-service
-
     ports:
       - 2800:2800
   # front:
