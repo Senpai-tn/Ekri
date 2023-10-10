@@ -1,6 +1,7 @@
-FROM node:18.17.1-alpine
+FROM node:alpine
 WORKDIR /Ekri
+RUN npm install -g npm nodemon
 COPY package*.json ./
-RUN npm install -g npm nodemon && npm install
 COPY ./ ./
-CMD ["nodemon", "index"]
+RUN npm install
+CMD ["npm", "start"]
