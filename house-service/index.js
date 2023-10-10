@@ -15,9 +15,6 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  axios.get("http://165.51.222.52:3000/").then((response) => {
-    console.log(response.data);
-  });
   res.send("Hello from house service");
 });
 
