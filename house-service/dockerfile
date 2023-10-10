@@ -1,6 +1,6 @@
 FROM node:alpine
 WORKDIR /Ekri/house-service
-COPY package*.json /
+COPY package*.json ./
 RUN npm install -g npm nodemon && npm install
-COPY . /
-CMD ["nodemon", "index"]
+COPY ./ ./
+CMD ["npm", "start"]

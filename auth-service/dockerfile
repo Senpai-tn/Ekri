@@ -1,6 +1,6 @@
 FROM node:alpine
 WORKDIR /Ekri/auth-service
-COPY package*.json /
+COPY package*.json ./
 RUN npm install -g npm nodemon && npm install
-COPY . /
+COPY ./ ./
 CMD ["nodemon", "index"]
