@@ -12,9 +12,11 @@ services:
       context: ./
       dockerfile: dockerfile
     image: senpai1996/root
+    command: npm start
     restart: always
     volumes:
       - ./:/Ekri/
+      - /node_modules
     ports:
       - 2500:2500
   user:
