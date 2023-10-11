@@ -3,5 +3,5 @@ WORKDIR /Ekri/
 RUN npm install -g npm nodemon
 COPY package*.json ./
 COPY ./ ./
-RUN npm install
+RUN npm ci
 CMD ["npm", "start"]
