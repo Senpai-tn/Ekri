@@ -55,17 +55,17 @@ services:
       - ./house-service:/Ekri/house-service
     ports:
       - 2800:2800
-  # front:
-  #   build:
-  #     context: ./ekri-fe
-  #     dockerfile: dockerfile
-  #   image: senpai1996/front
-  #   restart: always
-  #   volumes:
-  #     - ./ekri-fe:/Ekri/Ekri-FE
-  #     - /Ekri/Ekri-FE/node_modules
+  front:
+    build:
+      context: ./ekri-fe
+      dockerfile: dockerfile
+    image: senpai1996/front
+    restart: always
+    volumes:
+      - ./ekri-fe:/Ekri/Ekri-FE
+      - /Ekri/Ekri-FE/node_modules
 
-  #   ports:
-  #     - 3000:3000
+    ports:
+      - 3000:3000
 volumes:
   dbdata6:
