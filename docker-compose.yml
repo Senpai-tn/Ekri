@@ -19,11 +19,12 @@ services:
   user:
     build:
       context: ./user-service
-      dockerfile: ./user-service/dockerfile
+      dockerfile: ./dockerfile
     image: senpai1996/user
     restart: always
     volumes:
       - ./user-service:/Ekri/user-service
+      - /user-service/node_modules
       - ./middelware/:/Ekri/middelware
       - ./models/:/Ekri/models
       - ./node_modules/:/Ekri/node_modules
