@@ -25,7 +25,6 @@ services:
     restart: always
     volumes:
       - ./user-service:/Ekri/user-service
-      - /user-service/node_modules
       - ./middelware/:/Ekri/middelware
       - ./models/:/Ekri/models
       - ./node_modules/:/Ekri/node_modules
