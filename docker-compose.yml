@@ -18,7 +18,7 @@ services:
       - 2500:2500
   user:
     build:
-      context: ./
+      context: ./user-service
       dockerfile: ./user-service/dockerfile
     image: senpai1996/user
     restart: always
