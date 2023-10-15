@@ -8,6 +8,10 @@ function TextForm({ label, value, onChange, type, error }) {
       inputProps={{ className: ["rounded"] }}
       label={label}
       type={type}
+      value={value}
+      onChange={onChange}
+      error={!!error}
+      helperText={error && error.message}
     />
   );
 }

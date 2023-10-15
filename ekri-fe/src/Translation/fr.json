@@ -1,0 +1,14 @@
+{
+  "pages": {
+    "dashbord": {
+      "title": "Acceuil"
+    },
+    "add_house": { "title": "Ajouter maison" },
+    "list_house": { "title": "Liste des maisons" },
+    "profil": { "title": "Profil" },
+    "edit_profil": {
+      "title": "Modifier Profil",
+      "inputs": { "firstName": "Prénom", "lastName": "Nom" }
+    }
+  }
+}

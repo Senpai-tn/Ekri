@@ -1,4 +1,4 @@
-import uiActions from "../actions/uiActions";
+import { uiActions } from "../actions";
 
 const initialState = {
   isDark: true,

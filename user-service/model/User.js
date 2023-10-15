@@ -1,4 +1,5 @@
-const { model, Schema } = require("mongoose");
+const { model, Schema, connect } = require("mongoose");
+
 const userSchema = new Schema({
   email: {},
   password: {},

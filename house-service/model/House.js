@@ -1,5 +1,7 @@
 const { Schema, model, connect } = require("mongoose");
-connect("mongodb://mongo:27017/Ekri")
+connect(
+  "mongodb+srv://khaleddsahli:lnQuTDpmBZva5tZB@senpaidb.8wwyuzw.mongodb.net/Ekri?"
+)
   .then(() => {
     console.log("connected to db");
   })

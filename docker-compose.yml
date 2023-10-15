@@ -1,12 +1,5 @@
 version: "3.8"
 services:
-  mongo:
-    image: mongo:6-jammy
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - dbdata6:/data/db
   root:
     build:
       context: ./
@@ -54,6 +47,10 @@ services:
     restart: always
     volumes:
       - ./house-service:/Ekri/house-service
+      - ./middelware/:/Ekri/middelware
+      - ./models/:/Ekri/models
+      - ./node_modules/:/Ekri/node_modules
+      - ./package.json:/Ekri/package.json
     ports:
       - 2800:2800
   front:
@@ -64,8 +61,9 @@ services:
     restart: always
     volumes:
       - ./ekri-fe:/Ekri/Ekri-FE
-      - /Ekri/Ekri-FE/node_modules
 
+    environment:
+      - REACT_APP_URL=http://root:2500
     ports:
       - 3000:3000
 volumes:

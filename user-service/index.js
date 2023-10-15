@@ -4,13 +4,14 @@ const { connect } = require("mongoose");
 const jwt = require("jsonwebtoken");
 const { checkRole } = require("../middelware");
 const axios = require("axios");
-const User = require("../models/User");
+const User = require("./model/User");
 const { catchError, checkAuth } = require("../middelware/fn");
-const House = require("../models/House.");
 const errors = require("../middelware/errors");
 const app = express();
 
-connect("mongodb://mongo:27017/Ekri")
+connect(
+  "mongodb+srv://khaleddsahli:lnQuTDpmBZva5tZB@senpaidb.8wwyuzw.mongodb.net/Ekri"
+)
   .then(() => {
     console.log("connected to db");
   })
@@ -39,7 +40,8 @@ app.post("/login", [], async (req, res) => {
     //     res.send({ error: error.message });
     //   });
     const user = await User.findOne({ email });
-    if (user) {
+    console.log(user);
+    if (user !== null) {
       if (user.password === password) {
         if (user.deletedAt === null) {
           if (user.blockedTo === null) {
@@ -91,11 +93,10 @@ app.post("/register", [], async (req, res) => {
   }
 });
 
-app.put("/", async (req, res) => {
+app.put("/", [checkAuth()], async (req, res) => {
   try {
     const {
       _id,
-      uid,
       email,
       password,
       firstName,
@@ -107,32 +108,35 @@ app.put("/", async (req, res) => {
       blockedTo,
     } = req.body;
     const user = await User.findById(_id);
-    console.log(firstName);
-    Object.assign(user, {
-      email,
-      password,
-      firstName: firstName ? firstName : user.firstName,
-      lastName,
-      promo,
-      tel,
-      role,
-      deletedAt,
-      blockedTo,
-    });
-    user
-      .save()
-      .then((savedUser) => {
-        res.send(savedUser);
-      })
-      .catch((error) => {
-        catchError(error, res);
+    if (user) {
+      Object.assign(user, {
+        email: email ? email : user.email,
+        password: password ? password : user.password,
+        firstName: firstName ? firstName : user.firstName,
+        lastName: lastName ? lastName : user.lastName,
+        promo: promo ? promo : user.promo,
+        tel: tel ? tel : user.tel,
+        role: role ? role : user.role,
+        deletedAt: deletedAt ? deletedAt : user.deletedAt,
+        blockedTo: blockedTo ? blockedTo : user.blockedTo,
       });
+      user
+        .save()
+        .then((savedUser) => {
+          res.send({ user: savedUser });
+        })
+        .catch((error) => {
+          catchError(error, res);
+        });
+    } else {
+      res.status(404).send("user not found");
+    }
   } catch (error) {
     catchError(error, res);
   }
 });
 
-app.post("/search", [checkAuth(), checkRole(["1", "55"])], async (req, res) => {
+app.post("/search", [], async (req, res) => {
   try {
     const users = await User.find();
     res.send(users);
