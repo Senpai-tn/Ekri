@@ -61,7 +61,7 @@ services:
     restart: always
     volumes:
       - ./ekri-fe:/Ekri/Ekri-FE
-
+      - /Ekri/Ekri-FE/node_modules
     environment:
       - REACT_APP_URL=http://root:2500
     ports:
