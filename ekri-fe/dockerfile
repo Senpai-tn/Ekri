@@ -1,7 +1,7 @@
 FROM node:alpine
 WORKDIR /Ekri/Ekri-FE
-RUN npm install -g npm
+RUN npm install -g npm react-scripts
 COPY package.json .
-RUN npm install
+RUN npm ci
 COPY ./  ./ 
 CMD [ "npm" ,"start" ]
